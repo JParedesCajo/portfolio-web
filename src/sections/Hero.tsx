@@ -1,130 +1,76 @@
-
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowDownRight, ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, GraduationCap, MapPin } from "lucide-react";
+import HeroAtmosphere from "../components/animations/HeroAtmosphere";
+import LaptopVisual from "../components/animations/LaptopVisual";
 
-const technologies = [
-  "Next.js",
-  "TypeScript",
-  "Tailwind CSS",
-  "Node.js",
-  "PostgreSQL",
-];
+const stack = ["Next.js", "TypeScript", "React", "Node.js", "PostgreSQL"];
 
-// Dibuja la portada y sus animaciones de presentación.
+// Presenta el perfil y la computadora 3D con ambiente azul sin afectar las demás secciones.
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section
-      id="inicio"
-      className="relative isolate flex min-h-screen items-center overflow-hidden"
-    >
-      <div className="hero-grid absolute inset-0 -z-10" />
+    <section id="inicio" className="portfolio-hero relative isolate overflow-hidden">
+      <HeroAtmosphere />
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-7 pb-20 pt-28 lg:grid-cols-2 lg:px-14">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1370px] grid-cols-1 items-center gap-8 px-7 pb-16 pt-28 sm:px-12 lg:min-h-[720px] lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-10 lg:px-[7%] lg:py-20">
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 35 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative z-10"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative z-10 max-w-[670px]"
         >
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--surface)] px-4 py-2 text-xs">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            Software Developer Jr. · Trujillo, Perú
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[var(--surface)]/50 px-4 py-2 text-[11px] font-medium text-[var(--muted)] backdrop-blur-md">
+            <span className="availability-dot" />
+            Software Developer Jr <span className="opacity-45">/</span> Trujillo, Perú
           </div>
 
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-[var(--accent)]">
             Bienvenido a mi portafolio
           </p>
 
-          <h1 className="mb-6 text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl xl:text-7xl">
-            Hola, soy
-            <span className="gradient-text mt-2 block">
-              Jeffry.
-            </span>
+          <h1 className="hero-name font-bold tracking-[-0.065em]">
+            Hola, soy <span className="hero-name-accent block">Jeffry.</span>
           </h1>
 
-          <h2 className="mb-6 max-w-xl text-2xl font-semibold sm:text-3xl">
+          <h2 className="mt-7 max-w-[590px] text-[clamp(1.45rem,2.4vw,2.35rem)] font-semibold leading-[1.22] tracking-[-0.035em]">
             Construyo experiencias digitales que generan impacto.
           </h2>
 
-          <p className="mb-9 max-w-lg text-base leading-8 text-[var(--muted)]">
-            Desarrollador de software enfocado en aplicaciones web,
-            sistemas empresariales y soluciones tecnológicas
-            para necesidades reales.
+          <p className="mt-5 max-w-[540px] text-sm leading-7 text-[var(--muted)] sm:text-base sm:leading-8">
+            Desarrollo aplicaciones web, móviles y sistemas empresariales para necesidades reales.
           </p>
 
-          <div className="flex flex-wrap gap-4">
-            <a
-              href="#proyectos"
-              className="inline-flex items-center gap-3 rounded-xl bg-indigo-600 px-6 py-3.5 font-medium text-white transition hover:-translate-y-1 hover:bg-indigo-500"
-            >
-              Ver proyectos
-              <ArrowUpRight size={19} />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a className="hero-primary-btn" href="#proyectos">
+              Ver proyectos <ArrowUpRight size={18} />
             </a>
-
-            <a
-              href="#contacto"
-              className="inline-flex items-center gap-3 rounded-xl border border-[var(--border)] px-6 py-3.5 font-medium transition hover:-translate-y-1 hover:bg-[var(--surface-2)]"
-            >
-              Contactar
-              <ArrowDownRight size={19} />
+            <a className="hero-secondary-btn" href="#contacto">
+              Contactar <ArrowDownRight size={18} />
             </a>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-2">
-            {technologies.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1.5 text-xs text-[var(--muted)]"
-              >
-                {tech}
-              </span>
-            ))}
+          <div className="mt-10 flex max-w-[600px] items-start gap-3 border-t border-[var(--border)] pt-5">
+            <GraduationCap className="mt-0.5 shrink-0 text-[var(--accent)]" size={19} />
+            <div>
+              <p className="text-sm font-medium">Ingeniería de Sistemas e Inteligencia Artificial</p>
+              <p className="mt-1 text-xs text-[var(--muted)]">Estudiante de 8.º ciclo · Universidad Privada Antenor Orrego</p>
+            </div>
           </div>
         </motion.div>
 
-        <div className="relative flex min-h-[370px] items-center justify-center lg:min-h-[550px]">
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, scale: 0.75 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative flex items-center justify-center"
-          >
-            <motion.div
-              className="hero-orb flex items-center justify-center"
-              animate={
-                reduceMotion
-                  ? undefined
-                  : { y: [0, -16, 0], rotate: [-5, 4, -5] }
-              }
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <span className="relative z-10 text-7xl font-black tracking-tight text-white/90">
-                JP
-              </span>
-            </motion.div>
-          </motion.div>
+        <div className="hero-visual relative flex min-h-[290px] items-center justify-center sm:min-h-[350px] lg:min-h-[500px]">
+          <LaptopVisual />
+        </div>
 
-          <div className="floating-card absolute left-0 top-[15%] flex items-center gap-3">
-            <Code2 size={20} className="text-indigo-400" />
-            <div>
-              <p className="text-sm font-semibold">Frontend</p>
-              <p className="text-xs text-[var(--muted)]">React · Next.js</p>
-            </div>
+        <div className="col-span-1 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--border)] pt-5 lg:col-span-2 lg:mt-0">
+          <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
+            <MapPin size={15} /> Trujillo, Perú
           </div>
-
-          <div className="floating-card absolute bottom-[12%] right-0">
-            <p className="text-sm font-semibold">Full Stack</p>
-            <p className="mt-1 text-xs text-[var(--muted)]">
-              Interfaces + Backend
-            </p>
+          <div className="flex flex-wrap gap-2">
+            {stack.map((item) => <span className="tech-pill" key={item}>{item}</span>)}
           </div>
         </div>
       </div>
