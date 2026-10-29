@@ -1,17 +1,19 @@
 
 import type { MetadataRoute } from "next";
 
-// Genera el sitemap con la dirección pública del portafolio.
+// Obliga a Next.js a generar el sitemap durante la compilación.
+export const dynamic = "force-static";
+
+// Genera el sitemap utilizando la URL pública configurada.
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = (
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://portfolio-web-dyc.pages.dev"
+    "https://jeffryparedes.pages.dev"
   ).replace(/\/+$/, "");
 
   return [
     {
       url: siteUrl,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
