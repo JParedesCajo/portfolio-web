@@ -105,48 +105,55 @@ export default function About() {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, x: 25 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="group w-full overflow-hidden rounded-[22px] border border-[var(--border)] bg-[var(--surface)] shadow-[0_12px_30px_rgba(8,24,48,0.07)] transition-colors duration-300 hover:border-[var(--accent)]"
-          >
-            <div className="relative h-[240px] w-full overflow-hidden bg-[#0B1A30] sm:h-[260px] lg:h-[240px]">
-              {!photoError ? (
-                <Image
-                  src="/images/jeffry.webp"
-                  alt="Fotografía de Jeffry Paredes Cajo"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 340px"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transform-none"
-                  onError={() => setPhotoError(true)}
-                />
-              ) : (
-                <div className="flex h-full flex-col items-center justify-center gap-3">
-                  <UserRound
-                    size={45}
-                    className="text-[#8EBDFB]"
-                  />
-                </div>
-              )}
-            </div>
+          
+<motion.div
+  initial={reduceMotion ? false : { opacity: 0, x: 25 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.65, delay: 0.1 }}
+  className="group w-full overflow-hidden rounded-[22px] border border-[var(--border)] bg-[var(--surface)] shadow-[0_12px_30px_rgba(8,24,48,0.07)] transition-colors duration-300 hover:border-[var(--accent)]"
+>
+  {/* Fotografía dentro de la card */}
+  <div className="relative h-[240px] w-full overflow-hidden bg-[#0B1A30] sm:h-[260px] lg:h-[240px]">
+    {!photoError ? (    
+<Image
+  src="/images/jeffry-hd.webp"
+  alt="Fotografía de Jeffry Paredes Cajo"
+  fill
+  sizes="(max-width: 1024px) 100vw, 340px"
+  className="object-cover object-[center_35%]"
+  onError={() => setPhotoError(true)}
+/>
+    ) : (
+      <div className="flex h-full flex-col items-center justify-center gap-3">
+        <UserRound
+          size={45}
+          className="text-[#8EBDFB]"
+        />
+        <p className="text-xs text-[#B8D1F5]">
+          Fotografía no disponible
+        </p>
+      </div>
+    )}
+  </div>
 
-            <div className="border-t border-[var(--border)] px-5 py-4">
-              <h3 className="text-lg font-semibold text-[var(--foreground)]">
-                Jeffry Paredes Cajo
-              </h3>
+  {/* Información personal */}
+  <div className="border-t border-[var(--border)] px-5 py-4">
+    <h3 className="text-lg font-semibold text-[var(--foreground)]">
+      Jeffry Paredes Cajo
+    </h3>
 
-              <p className="mt-1 text-sm text-[var(--muted)]">
-                Software Developer Jr
-              </p>
+    <p className="mt-1 text-sm text-[var(--muted)]">
+      Software Developer Jr
+    </p>
 
-              <div className="mt-2 flex items-center gap-2 text-xs text-[var(--accent)]">
-                <MapPin size={14} />
-                Trujillo, Perú
-              </div>
-            </div>
-          </motion.div>
+    <div className="mt-2 flex items-center gap-2 text-xs text-[var(--accent)]">
+      <MapPin size={14} />
+      Trujillo, Perú
+    </div>
+  </div>
+</motion.div>
+
         </div>
 
         <div className="mt-9 grid items-stretch gap-5 md:grid-cols-2">
